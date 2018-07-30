@@ -17,6 +17,7 @@ window.onclick = function(event) {
   }
 }
 
+
 function myFunction() {
     document.getElementById("myDropdown2").classList.toggle("show");
 }
