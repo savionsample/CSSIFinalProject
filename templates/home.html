@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
+<title>Home</title>
+
+
+
 <head>
-  <link href="../CSS/styles.css" rel="stylesheet">
+  <link href="../CSS/home.css" rel="stylesheet">
 
 
 </head>
@@ -10,55 +14,39 @@
 
 
   <div class="navbar">
-    <ul>
-      <li class="icon">Logo</li>
-      <li class="search-bar">
-        <input type="text" placeholder="Search...">
-        <input type="submit">
-      </li>
-    </ul>
+
+    <center>  <h1 class="icon">LOGO</h1>
+
+        <input id='q' type="text" placeholder="Search...">
+
+      <center>
+        <p>Choose two sources to compare:</p>
+
+        <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Sources</button>
+          <div id="myDropdown1" class="dropdown-content">
+            <a href="#1">ABC</a>
+            <a href="#2">FOX</a>
+            <a href="#3">CNN</a>
+          </div>
+          <button onclick="myFunction()" class="dropbtn">Sources</button>
+            <div id="myDropdown2" class="dropdown-content">
+              <a href="#1">ABC</a>
+              <a href="#2">FOX</a>
+              <a href="#3">CNN</a>
+            </div>
+        </div>
+      </center>
+        <button id= 'search' type="Search">SEARCH</button>
+
+
+</center>
 
 
   </div>
-
-
-    <div class="content">
-
-
-      <div class="left">
-        <p>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-        </p>
-      </div>
-
-      <div class="right">
-        <p>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-          a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>a<br>
-        </p>
-      </div>
-
-
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </body>
+<script src=../Javascript/home.js></script>
 
 </html>
