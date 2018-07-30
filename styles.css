@@ -1,0 +1,66 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+/* input {
+  margin: auto;
+  padding: 6px;
+  font-size: 16px;
+} */
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+input[type="text"] {
+    width: 200px;
+    height: 20px;
+    padding-right: 50px;
+    /* border: none; */
+}
+
+input[type="submit"] {
+    margin-left: -50px;
+    height: 25px;
+    width: 50px;
+    background: blue;
+    color: white;
+    border: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+div.left {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  width: 50%;
+  background-color: orange;
+}
+
+div.right {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  width: 50%;
+  background-color: blue;
+}
