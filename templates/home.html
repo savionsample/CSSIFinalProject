@@ -15,11 +15,35 @@
 
   <div class="navbar">
 
-    <center>  <h1 class="icon">Logo</h1>
-
+    <center>  <h1 class="icon">LOGO</h1>
+      <form action="/results" method="post">
         <input id='q' type="text" placeholder="Search...">
-        <br>
-        <button id= 'search' type="Search">Search</button>
+        <button>search</button>
+      </form>
+
+      <center>
+
+
+        <p>Choose two sources to compare:</p>
+
+        <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Sources</button>
+          <div id="myDropdown1" class="dropdown-content">
+            <a href="#1">ABC</a>
+            <a href="#2">FOX</a>
+            <a href="#3">CNN</a>
+          </div>
+          <button onclick="myFunction()" class="dropbtn">Sources</button>
+            <div id="myDropdown2" class="dropdown-content">
+              <a href="#1">ABC</a>
+              <a href="#2">FOX</a>
+              <a href="#3">CNN</a>
+            </div>
+        </div>
+      </center>
+
+
+        <button id='search' type="Search">SEARCH</button>
 
 
 </center>
@@ -29,6 +53,6 @@
 
 
 </body>
-<script src=../Javascript/results.js></script>
+<script src=../Javascript/home.js></script>
 
 </html>
