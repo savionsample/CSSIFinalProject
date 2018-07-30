@@ -1,0 +1,64 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+/* input {
+  margin: auto;
+  padding: 6px;
+  font-size: 16px;
+} */
+
+
+
+h1{
+  align-content: center;
+}
+input[type="text"] {
+    width: 400px;
+    height: 20px;
+    padding-right: 100px;
+    /* border: none; */
+}
+
+input[type="submit"] {
+    margin-left: -50px;
+    height: 25px;
+    width: 50px;
+    background: blue;
+    color: white;
+    border: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+#q{
+  align-self: center;
+  margin: 50px;
+  padding: 15px;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+
+}
+
+#search{
+  align-self: center;
+  margin: 50px;
+  padding: 10px;
+  height: 50%;
+  width: 50%;
+  overflow: hidden;
+}
