@@ -51,25 +51,27 @@ class HomePage(webapp2.RequestHandler):
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
+        pass
 
-        url = ('http://newsapi.org/v2/top-headlines?'
-                'source={{source1}}}&'
-                'q={{searchTerm}}&'
-                'apiKey=334b68e424df4756b9a3bbb3caba75bd')
+    def post(self):
+        search_term = self.request.get("search_term")
+        source1 = self.request.get("source1")
+        source2 = self.request.get("source2")
+        # template = env.get_template("templates/home.html")
+        templateVars = {
+            "search_term" : search_term,
+            "source1" : source1,
+            "source2": source2
+        }
+
+        url = 'http://newsapi.org/v2/top-headlines?q=' + search_term + '&apiKey=334b68e424df4756b9a3bbb3caba75bd'
+
+        print('URLLLLLLLLLLLLLL' + url)
         response = requests.get(url)
         print(response.json())
 
         template = env.get_template('templates/results.html')
-        self.response.write(template.render())
-
-    def post(self):
-        pass
-        # q = self.request.get('q')
-        #
-        # url = ('http://newsapi.org/v2/top-headlines?'
-        #         'q=' + q + 'apiKey=334b68e424df4756b9a3bbb3caba75bd')
-        # response = requests.get(url)
-        # print(response.json())
+        self.response.write(template.render(templateVars))
 
 
 
