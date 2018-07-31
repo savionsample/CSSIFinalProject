@@ -10,26 +10,24 @@
   <div class="content">
 
     <center>
-      <h1 class="icon">LOGO</h1>
+      <h1 class="icon">JuxtaPost</h1>
       <form action="/results" method="post">
         <input name="search_term" type="text" placeholder="Search...">
 
         <center>
           <p>Choose two sources to compare:</p>
-          <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Sources</button>
-            <div id="myDropdown1" class="dropdown-content">
-              <a href="#1">ABC</a>
-              <a href="#2">FOX</a>
-              <a href="#3">CNN</a>
-            </div>
-          <button onclick="myFunction()" class="dropbtn">Sources</button>
-            <div id="myDropdown2" class="dropdown-content">
-              <a href="#1">ABC</a>
-              <a href="#2">FOX</a>
-              <a href="#3">CNN</a>
-            </div>
-          </div>
+        <select id='source1'>
+          <option value="CNN">CNN</option>
+          <option value="FOX">FOX</option>
+          <option value="NPR">NPR</option>
+          <option value="ABC">ABC</option>
+        </select>
+        <select id='source2'>
+          <option value="CNN">CNN</option>
+          <option value="FOX">FOX</option>
+          <option value="NPR">NPR</option>
+          <option value="ABC">ABC</option>
+        </select>
         </center>
 
         <button id="search" type="Search">SEARCH</button>
