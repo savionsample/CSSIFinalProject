@@ -7,13 +7,6 @@ import requests
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
-
-# print('NEWSAPIDIRECTORY', dir(newsapi))
-
- # newsapi = NewsApiClient(api_key='334b68e424df4756b9a3bbb3caba75bd')
-
-# let query =`${url}?api_key=${apiKey}&q=${searchTerm}&limit=1`;
-
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -60,18 +53,16 @@ class ResultsPage(webapp2.RequestHandler):
             "source2": source2
         }
 
-        url = 'http://newsapi.org/v2/top-headlines?q=' + search_term + '&apiKey=334b68e424df4756b9a3bbb3caba75bd'
+        url = """http://newsapi.org/v2/top-headlines?q={search_term} \
+                &sortBy=popularity \
+                &sources={source1} \
+                &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source1=source1)
 
-        print('URLLLLLLLLLLLLLL' + url)
         response = requests.get(url)
         print(response.json())
 
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
-
-
-
-
 
 app = webapp2.WSGIApplication([
     ('/', HomePage), #this maps the root url to the MainPage Handler
