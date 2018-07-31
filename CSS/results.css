@@ -3,6 +3,12 @@
 /* #f9b248 */
 /* #e8d5b7 */
 
+/* #3D5A80 */
+/* #98C1D9 */
+/* #FFFFFF */
+/* #EE6C4D */
+/* #293241 */
+
 
 
 
@@ -110,4 +116,13 @@ div.right {
 a.profile {
   display: inline-block;
   float: right;
+}
+
+
+.left {
+  border-right: 3px solid black;
+}
+
+.right {
+  border-left: 3px solid black;
 }
