@@ -1,3 +1,11 @@
+/* #0e2431 */
+/* #fc3a52 */
+/* #f9b248 */
+/* #e8d5b7 */
+
+
+
+
 body, html {
   margin: 0;
   padding: 0;
@@ -20,7 +28,7 @@ body {
 .navbar {
   margin-top: 0;
   padding: 10px;
-  background-color: red;
+  background-color: #0e2431;
   height: 50px;
 }
 
@@ -29,27 +37,37 @@ ul {
   display: flex;
   flex-direction: row;
   height: 100%;
+  width: 100%;
+  margin-top: 10px;
 }
 
 li {
   margin-right: 5px;
   height: 100%;
+  margin-top: 0px;
 }
 
 input[type="text"] {
-    width: 200px;
-    height: 22px;
+    width: 350px;
+    height: 35px;
+    margin-top: 0px;
     padding-right: 50px;
     border: none;
+    border-radius: 3px 5px 5px 3px;
+    font-size: 14px;
 }
 
 input[type="submit"] {
-    margin-left: -50px;
-    height: 25px;
-    width: 50px;
-    background: blue;
+    margin-left: -65px;
+    width: 65px;
+    height: 37px;
+
+    margin-top: 0px;
+    background: #fc3a52;
     color: white;
     border: 0;
+    border-radius: 0px 5px 5px 0px;
+    font-size: 15px;
 }
 
 .content {
@@ -63,7 +81,7 @@ div.left {
   overflow-y: scroll;
   height: 100%;
   width: 50%;
-  background-color: orange;
+  background-color: #e8d5b7;
 }
 
 div.right {
@@ -71,5 +89,5 @@ div.right {
   overflow-y: scroll;
   height: 100%;
   width: 50%;
-  background-color: blue;
+  background-color: #d8c7ab;
 }
