@@ -10,14 +10,24 @@
 
 </head>
 
-<!-- <div>
+<div>
   {% if current_user %}
     Welcome, {{ current_user.email() }}!
     <a href="{{ logout_url }}"> Log Out</a>
   {% else %}
     <a href="{{ login_url }}"> Log In</a>
   {% endif %}
-</div> -->
+</div>
+
+<ul>
+{% for person in people %}
+  {% if current_user and current_user.email() == person.email %}
+  <li><strong><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
+  {% else %}
+  <li><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>
 
 <body>
 
