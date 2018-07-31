@@ -2,12 +2,8 @@
 <html>
 <title>Home</title>
 
-
-
 <head>
   <link href="../CSS/home.css" rel="stylesheet">
-
-
 </head>
 
 <div>
@@ -30,49 +26,36 @@
 </ul>
 
 <body>
-
-
-  <div class="navbar">
+  <div class="content">
 
     <center>
-      <h1 class="icon">LOGO</h1>
+      <h1 class="icon">JuxtaPost</h1>
       <form action="/results" method="post">
         <input name="search_term" type="text" placeholder="Search...">
-        <button>search</button>
+
+        <center>
+          <p>Choose two sources to compare top headlines:</p>
+        <select name='source1'>
+          <option value='cnn'>CNN</option>
+          <option value='fox-news'>FOX</option>
+          <option value='independent'>Independent</option>
+          <option value='abc-news'>ABC News</option>
+        </select>
+        <select name='source2'>
+          <option value='cnn'>CNN</option>
+          <option value='fox-news'>FOX</option>
+          <option value='independent'>Independent</option>
+          <option value='abc-news'>ABC News</option>
+        </select>
+        </center>
+
+        <button id="search" type="Search">SEARCH</button>
       </form>
-
-    <center>
-
-
-        <p>Choose two sources to compare:</p>
-
-        <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">Sources</button>
-          <div id="myDropdown1" class="dropdown-content">
-            <a href="#1">ABC</a>
-            <a href="#2">FOX</a>
-            <a href="#3">CNN</a>
-          </div>
-          <button onclick="myFunction()" class="dropbtn">Sources</button>
-            <div id="myDropdown2" class="dropdown-content">
-              <a href="#1">ABC</a>
-              <a href="#2">FOX</a>
-              <a href="#3">CNN</a>
-            </div>
-        </div>
-      </center>
-
-
-        <button id='search' type="Search">SEARCH</button>
-
-
-</center>
+    </center>
 
 
   </div>
-
-
 </body>
-<script src=../Javascript/home.js></script>
 
+<script src=../Javascript/home.js></script>
 </html>
