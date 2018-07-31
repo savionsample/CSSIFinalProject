@@ -47,19 +47,28 @@ class ResultsPage(webapp2.RequestHandler):
         source1 = self.request.get("source1")
         source2 = self.request.get("source2")
         # template = env.get_template("templates/home.html")
-        templateVars = {
-            "search_term" : search_term,
-            "source1" : source1,
-            "source2": source2
-        }
+
 
         url = """http://newsapi.org/v2/top-headlines?q={search_term} \
                 &sortBy=popularity \
-                &sources={source1} \
                 &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source1=source1)
 
         response = requests.get(url)
-        print(response.json())
+        json = response.json()
+        articles = json["articles"]
+
+        templateVars = {
+            "search_term" : search_term,
+            "source1" : source1,
+            "source2": source2,
+            "articles" : articles,
+        }
+
+
+
+
+        # print(articles[0]["title"])
+        # print(response.json())
 
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))

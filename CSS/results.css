@@ -37,7 +37,7 @@ body {
 
 }
 
-ul {
+.navbar ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
@@ -47,10 +47,18 @@ ul {
   align-items: center;
 }
 
-li {
+.navbar li {
   margin-right: 5px;
   height: 100%;
   margin-top: 0px;
+}
+
+.content ul {
+  list-style-type: none;
+}
+
+.content li {
+  margin-bottom: 20px;
 }
 
 input[type="text"] {
