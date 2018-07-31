@@ -12,8 +12,6 @@ from google.appengine.ext import ndb
 
  # newsapi = NewsApiClient(api_key='334b68e424df4756b9a3bbb3caba75bd')
 
-# let query =`${url}?api_key=${apiKey}&q=${searchTerm}&limit=1`;
-
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -25,15 +23,6 @@ class HomePage(webapp2.RequestHandler):
         searchTerm = self.request.get("searchTerm")
         source1 = self.request.get("source1")
         source2 = self.request.get("source2")
-        template = env.get_template("templates/home.html")
-        templateVars = {
-            "searchTerm" : searchTerm,
-            "source1" : source1,
-            "source2": source2
-        }
-        print(source1)
-        self.response.write(template.render(templateVars))
-        # logging.info(response.json())
         #login
         # current_user = users.get_current_user()
         # people = Person.query().fetch()
@@ -50,8 +39,15 @@ class HomePage(webapp2.RequestHandler):
         #     'logout_url': logout_url,
         #     'current_person': current_person,
         # }
-        # template = env.get_template('templates/home.html')
-        # self.response.write(template.render())
+        template = env.get_template("templates/home.html")
+        templateVars = {
+            "searchTerm" : searchTerm,
+            "source1" : source1,
+            "source2": source2
+        }
+        print(source1)
+        self.response.write(template.render(templateVars))
+        # logging.info(response.json())
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
