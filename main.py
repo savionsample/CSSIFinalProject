@@ -29,6 +29,8 @@ class HomePage(webapp2.RequestHandler):
         source2 = self.request.get("source2")
 
         #login
+        login_url = ''
+        logout_url = ''
         current_user = users.get_current_user()
         people = Person.query().fetch()
         if current_user:
@@ -67,6 +69,7 @@ class Profile(webapp2.RequestHandler):
         logout_url = users.create_logout_url('/')
         templateVars = {
             'current_user': current_user,
+            'logout_url': logout_url,
         }
         self.response.write(template.render(templateVars))
 
