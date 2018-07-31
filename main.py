@@ -48,20 +48,36 @@ class ResultsPage(webapp2.RequestHandler):
         source2 = self.request.get("source2")
         # template = env.get_template("templates/home.html")
 
-
-        url = """http://newsapi.org/v2/top-headlines?q={search_term} \
+        logging.info(search_term)
+        url1 = """http://newsapi.org/v2/everything?sources={source1} \
+                &q={search_term} \
                 &sortBy=popularity \
                 &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source1=source1)
 
-        response = requests.get(url)
-        json = response.json()
-        articles = json["articles"]
+        url2 = """http://newsapi.org/v2/everything?sources={source2} \
+                &q={search_term} \
+                &sortBy=popularity \
+                &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source2=source2)
 
+
+        response1 = requests.get(url1)
+        json1 = response1.json()
+        response2 = requests.get(url2)
+        json2 = response2.json()
+        print('json1:'+ str(json1))
+        print('json2: '+ str(json2 ))
+        articles1 = json1["articles"]
+        articles2 = json2["articles"]
+        print("source are: ")
+        print(source1)
+        print(source2)
         templateVars = {
-            "search_term" : search_term,
-            "source1" : source1,
-            "source2": source2,
-            "articles" : articles,
+             "search_term" : search_term,
+             "source1" : source1,
+             "source2": source2,
+             "articles1" : articles1,
+             "articles2" : articles2,
+
         }
 
 

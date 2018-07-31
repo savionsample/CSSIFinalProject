@@ -26,16 +26,18 @@
 
   <div class="content">
     <div class="left">
+      <center><h1> {{source1}}</h1></center>
       <ul>
-        {% for article in articles %}
-        <li color="red"><a href="{{ article['url'] }}">{{ article['title'] }}</a></li>
+        {% for article in articles1 %}
+        <li color="red"><a href="{{ article['url'] }}"> {{ article['title'] }}/a></li>
         {% endfor %}
       </ul>
     </div>
 
     <div class="right">
+      <center><h1> {{source2}}</h1></center>
       <ul>
-        {% for article in articles %}
+        {% for article in articles2 %}
         <li color="red"><a href="{{ article['url'] }}">{{ article['title'] }}</a></li>
         {% endfor %}
       </ul>
