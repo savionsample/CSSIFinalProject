@@ -108,6 +108,7 @@ class ResultsPage(webapp2.RequestHandler):
         response1 = requests.get(url1)
         response2 = requests.get(url2)
         json1 = response1.json()
+        logging.info(json1)
         json2 = response2.json()
 
         articles1 = json1["articles"]
