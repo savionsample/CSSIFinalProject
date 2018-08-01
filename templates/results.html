@@ -54,7 +54,10 @@
             {% else %}
               <h4> {{ article['author'] }} </h4>
             {% endif %}
-            <h4><a href="{{ article['url'] }}">Go to link</a><h4>
+
+            <button type="display"><i class="fas fa-eye fa-2x"></i></button>
+            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+            <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
           </div>
         {% endfor %}
       </div>
@@ -72,7 +75,10 @@
           {% else %}
             <h4> {{ article['author'] }} </h4>
           {% endif %}
-          <h4><a href="{{ article['url'] }}">Go to Link</a><h4>
+          <button type="display"><i class="fas fa-eye fa-2x"></i></button>
+          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+          <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+
         </div>
       {% endfor %}
   </div>
