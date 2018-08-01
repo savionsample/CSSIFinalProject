@@ -54,10 +54,11 @@
             {% else %}
               <h4> {{ article['author'] }} </h4>
             {% endif %}
-
-            <button type="display"><i class="fas fa-eye fa-2x"></i></button>
-            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+            <center>
+            <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
             <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+          </center>
           </div>
         {% endfor %}
       </div>
@@ -75,9 +76,11 @@
           {% else %}
             <h4> {{ article['author'] }} </h4>
           {% endif %}
-          <button type="display"><i class="fas fa-eye fa-2x"></i></button>
-          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+          <center>
+          <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
           <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+        </center>
 
         </div>
       {% endfor %}
