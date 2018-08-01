@@ -24,6 +24,8 @@ body, html {
 body {
   height: 100%;
   margin-bottom: 0;
+  background-color: #f6f6f6;
+  font-family: 'Lato', sans-serif;
 }
 
 /* input {
@@ -35,7 +37,7 @@ body {
 .navbar {
   margin-top: 0;
   padding: 10px;
-  background-color: #0e2431;
+  background-color: #293241;
   height: 50px;
 }
 
@@ -76,19 +78,17 @@ input[type="text"] {
     border: none;
     border-radius: 3px 5px 5px 3px;
     font-size: 14px;
+    vertical-align: top;
 }
 
-input[type="submit"] {
-    margin-left: -65px;
-    width: 65px;
-    height: 37px;
-
-    margin-top: 0px;
-    background: #fc3a52;
+button {
+    background: #EE6C4D;
     color: white;
-    border: 0;
-    border-radius: 0px 5px 5px 0px;
-    font-size: 15px;
+    height: 36px;
+    width: 36px;
+    vertical-align: top;
+    border-radius: 4px;
+    border: none;
 }
 
 .content {
@@ -102,7 +102,7 @@ div.left {
   overflow-y: scroll;
   height: 100%;
   width: 50%;
-  background-color: #e8d5b7;
+  background-color: #e0e0e0;
 }
 
 div.right {
@@ -110,7 +110,7 @@ div.right {
   overflow-y: scroll;
   height: 100%;
   width: 50%;
-  background-color: #d8c7ab;
+  background-color: #e0e0e0;
 }
 
 
@@ -122,8 +122,37 @@ a.profile {
 
 .left {
   border-right: 3px solid black;
+  margin-left: 30px;
 }
 
 .right {
   border-left: 3px solid black;
+}
+
+.box {
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 4px;
+  border: 1px solid #d3d3d3;
+  box-shadow: 0px 3px 2px 1px rgba(0, 0, 0, 0.07);
+}
+
+.box h3 {
+  font-weight: 400;
+}
+
+.box h4 {
+  font-weight: 300;
+}
+
+h2, h3, h4 {
+  color: #3D5A80;
+
+}
+
+h2 {
+  text-decoration: underline;
 }

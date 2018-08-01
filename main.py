@@ -24,7 +24,7 @@ env = jinja2.Environment(
 class HomePage(webapp2.RequestHandler):
     def get(self):
 
-        searchTerm = self.request.get("searchTerm")
+        search_term = self.request.get("search_term")
         source1 = self.request.get("source1")
         source2 = self.request.get("source2")
 
@@ -39,7 +39,7 @@ class HomePage(webapp2.RequestHandler):
         else:
             current_person = None
 
-        login_url = users.create_login_url('/profile')
+        login_url = users.create_login_url('/')
         logout_url = users.create_logout_url('/')
         templateVars = {
             # For the login
@@ -49,7 +49,7 @@ class HomePage(webapp2.RequestHandler):
             'logout_url': logout_url,
             'current_person': current_person,
             # Putting term into url
-            "searchTerm" : searchTerm,
+            "search_term" : search_term,
             "source1" : source1,
             "source2": source2
         }
@@ -106,30 +106,19 @@ class ResultsPage(webapp2.RequestHandler):
 
 
         response1 = requests.get(url1)
-        json1 = response1.json()
         response2 = requests.get(url2)
+        json1 = response1.json()
         json2 = response2.json()
-        print('json1:'+ str(json1))
-        print('json2: '+ str(json2 ))
+
         articles1 = json1["articles"]
         articles2 = json2["articles"]
-        print("source are: ")
-        print(source1)
-        print(source2)
         templateVars = {
              "search_term" : search_term,
              "source1" : source1,
              "source2": source2,
              "articles1" : articles1,
              "articles2" : articles2,
-
         }
-
-
-
-
-        # print(articles[0]["title"])
-        # print(response.json())
 
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
