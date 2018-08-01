@@ -47,13 +47,17 @@
         </center>
         {% for article in articles1 %}
           <div class="box">
-            <h2> {{article['title']}} </h2>
+            <h2>{{article['title']}}</h2>
             <h3> {{article['description']}} </h3>
             {% if not article['author'] %}
               <h4>No author</h4>
             {% else %}
               <h4> {{ article['author'] }} </h4>
             {% endif %}
+
+            <button type="display"><i class="fas fa-eye fa-2x"></i></button>
+            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+            <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
           </div>
         {% endfor %}
       </div>
@@ -64,13 +68,17 @@
       </center>
       {% for article in articles2 %}
         <div class="box">
-          <h2> {{article['title']}} </h2>
+          <h2>{{article['title']}}</h2>
           <h3> {{article['description']}} </h3>
           {% if not article['author'] %}
             <h4>No author</h4>
           {% else %}
             <h4> {{ article['author'] }} </h4>
           {% endif %}
+          <button type="display"><i class="fas fa-eye fa-2x"></i></button>
+          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+          <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+
         </div>
       {% endfor %}
   </div>

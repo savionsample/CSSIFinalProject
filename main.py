@@ -39,7 +39,7 @@ class HomePage(webapp2.RequestHandler):
         else:
             current_person = None
 
-        login_url = users.create_login_url('/')
+        login_url = users.create_login_url('/profile')
         logout_url = users.create_logout_url('/')
         templateVars = {
             # For the login
