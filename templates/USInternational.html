@@ -17,13 +17,13 @@
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/templates/home.html">Compare US Sources</a>
-      <a href="/templates/International.html">Compare International Sources</a>
-      <a href="/templates/USInternational.html">Compare US & International Sources</a>
+      <a href="#">Compare US Sources</a>
+      <a href="#">Compare Foreign Sources</a>
+      <a href="#">Compare US & Foreign Sources</a>
     </div>
   </div>
-  <div>
-  <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a></right>
+  <div style='text-align:right;'>
+  <a href="{{ login_url }}" class="button"> Log In</a></right>
 </div>
 </div>
 
@@ -59,45 +59,11 @@
         <input name="search_term" type="text" placeholder="Search...">
         <button type="Search"><i class="fas fa-search fa-2x"></i></button>
         <center>
-          <p>Choose two US sources to compare top headlines:</p>
+          <p>Choose a US source and an International source to compare top headlines:</p>
         <select name="source1">
-          <option value="abc-news">ABC News</option>
-          <option value="associated-press">Associated Press</option>
-          <option value="axios">Axios</option>
-          <option value="bbc-news">BBC News</option>
-          <option value="bloomberg">Bloomberg</option>
-          <option value="breitbart-news">Breitbart News</option>
-          <option value="business-insider">Business Insider</option>
-          <option value="buzzfeed">Buzzfeed</option>
-          <option value="cbs-news">CBS News</option>
-          <option value="cnn">CNN</option>
-          <option value="daily-mail">Daily Mail</option>
-          <option value="financial-post">Financial Post</option>
-          <option value="financial-times">Financial Times</option>
-          <option value="fortune">fortune</option>
-          <option value="fox-news">FOX</option>
-          <option value="google-news">Google News</option>
-          <option value="independent">Independent</option>
-          <option value="national-geographic">National Geographic</option>
-          <option value="nbc-news">NBC News</option>
-          <option value="politico">Politico</option>
-          <option value="reuters">Reuters</option>
-          <option value="the-american-conservative">The American Conservative</option>
-          <option value="the-economist">The Economist</option>
-          <option value="the-hill">The Hill</option>
-          <option value="the-huffington-post">The Huffington Post</option>
-          <option value="the-new-york-times">The New York Times</option>
-          <option value="the-telegraph">The Telegraph</option>
-          <option value="the-wall-street-journal">The Wall Street Journal</option>
-          <option value="the-washington-post">The Washington Post</option>
-          <option value="time">Time</option>
-          <option value="usa-today">USA Today</option>
-          <option value="wired">Wired</option>
-        </select>
-        <select name="source2">
 
             <option value="abc-news">ABC News</option>
-            <option value="associated-press" selected='selected'>Associated Press</option>
+            <option value="associated-press">Associated Press</option>
             <option value="axios">Axios</option>
             <option value="bbc-news">BBC News</option>
             <option value="bloomberg">Bloomberg</option>
@@ -128,7 +94,47 @@
             <option value="time">Time</option>
             <option value="usa-today">USA Today</option>
             <option value="wired">Wired</option>
-          </select>
+        </select>
+        <select name="source2">
+          <option value="abc-news-au">ABC News AU</option>
+          <option value="aftenposten">Aftenposten</option>
+          <option value="al-jazeera-english">Al Jazeera English</option>
+          <option value="ansa">ANSA.it</option>
+          <option value="Argaam">Argaam</option>
+          <option value="ars-technica">Ars Technica</option>
+          <option value="ary-news">Ary News</option>
+          <option value="axios">Axios</option>
+          <option value="bild">Bild</option>
+          <option value="blasting-news-br">Blasting News Brazil</option>
+          <option value="business-insider-uk">UK Business Insider</option>
+          <option value="cbc-news">CBC News</option>
+          <option value="cnn-es">CNN Spanish</option>
+          <option value="der-tagesspiegel">Der Tagesspiegel</option>
+          <option value="die-zeit">Die Zeit</option>
+          <option value="el-mundo">El Mundo</option>
+          <option value="globo">Globo</option>
+          <option value="google-news">Google News</option>
+          <option value="goteborgs-posten">Goteborgs-Posten</option>
+          <option value="handelsblatt">Handelsblatt</option>
+          <option value="il-sole-24-ore">Il Sole 24 Ore</option>
+          <option value="la-gaceta">La Gaceta</option>
+          <option value="la-nacion">La Nacion</option>
+          <option value="la-repubblica">La Repubblica</option>
+          <option value="le-monde">Le Monde</option>
+          <option value="lenta">Lenta</option>
+          <option value="lequipe">L'equipe</option>
+          <option value="les-echos">Les Echos</option>
+          <option value="marca">Marca</option>
+          <option value="svenska-dagbladet">Svenska Dagbladet</option>
+          <option value="the-hindu">The Hindu</option>
+          <option value="the-irish-times">The Irish Times</option>
+          <option value="the-jerusalem-post">The Jerusalem Post</option>
+          <option value="the-times-of-india">The Times of India</option>
+          <option value="xinhua-net">Xinhua Net</option>
+
+        </select>
+        </center>
+
 
       </form>
     </center>

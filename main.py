@@ -123,9 +123,14 @@ class ResultsPage(webapp2.RequestHandler):
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
 
+
+
 app = webapp2.WSGIApplication([
     ('/', HomePage), #this maps the root url to the MainPage Handler
     ('/profile', Profile),
     ('/create', CreateAccount),
     ('/results', ResultsPage),
+    # ('/USForeign', USInternational),
+    # ('/Foreign', International),
+
 ], debug=True)
