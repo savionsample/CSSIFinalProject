@@ -11,6 +11,7 @@
 
 <div class="navbar">
   <a href="/">Home</a>
+  <a href='/profile'>Profile</a>
   <a href="/about">About</a>
   <div class="dropdown">
     <button class="dropbtn">Version
@@ -22,23 +23,21 @@
       <a href="/usinternational">Compare U.S. & International Sources</a>
     </div>
   </div>
-  <div style='text-align:right;'>
-  <a href="{{ login_url }}" class="button"> Log In</a></right>
+  <div >
+    {% if current_user %}
+    <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
+  <!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a> -->
+
+    {% else %}
+      <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
+    {% endif %}
 </div>
 </div>
 
 </div>
 
 </body>
-<div class="user">
-  {% if current_user %}
-  <a href="{{ logout_url }}" class="button"> Log Out</a><br>
-  <p class="welcome">Welcome, {{ current_user.email() }}!</p>
 
-  {% else %}
-    <!-- <a href="{{ login_url }}" class="button"> Log In</a> -->
-  {% endif %}
-</div>
 
 <ul>
 {% for person in people %}

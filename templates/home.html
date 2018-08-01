@@ -10,35 +10,34 @@
 </head>
 
 <div class="navbar">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
+  <a href='/'>Home</a>
+  <a href='/profile'>Profile</a>
+  <a href="/about">About</a>
   <div class="dropdown">
     <button class="dropbtn">Version
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="/templates/home.html">Compare US Sources</a>
-      <a href="/templates/International.html">Compare International Sources</a>
-      <a href="/templates/USInternational.html">Compare US & International Sources</a>
+      <a href='/'>Compare U.S. Sources</a>
+      <a href="/international">Compare International Sources</a>
+      <a href="/usinternational">Compare U.S. & International Sources</a>
     </div>
   </div>
   <div>
-  <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a></right>
+    {% if current_user %}
+    <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
+  <!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a> -->
+
+    {% else %}
+      <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
+    {% endif %}
 </div>
 </div>
 
 </div>
 
 </body>
-<div class="user">
-  {% if current_user %}
-  <a href="{{ logout_url }}" class="button"> Log Out</a><br>
-  <p class="welcome">Welcome, {{ current_user.email() }}!</p>
 
-  {% else %}
-    <!-- <a href="{{ login_url }}" class="button"> Log In</a> -->
-  {% endif %}
-</div>
 
 <ul>
 {% for person in people %}
@@ -59,7 +58,7 @@
         <input name="search_term" type="text" placeholder="Search...">
         <button type="Search"><i class="fas fa-search fa-2x"></i></button>
         <center>
-          <p>Choose two US sources to compare top headlines:</p>
+          <p>Choose two U.S. sources to compare top headlines:</p>
         <select name="source1">
           <option value="abc-news">ABC News</option>
           <option value="associated-press">Associated Press</option>
