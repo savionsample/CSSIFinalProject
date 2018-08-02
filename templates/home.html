@@ -10,10 +10,10 @@
 </head>
 
 <div class="navbar">
-  <a href="#home">Home</a>
-  <a href="#about">About</a>
+  <a href="#home" style="transition:.2s">Home</a>
+  <a href="#about" style="transition:.2s">About</a>
   <div class="dropdown">
-    <button class="dropbtn">Version
+    <button class="dropbtn" style="transition:.2s">Version
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -23,7 +23,7 @@
     </div>
   </div>
   <div>
-  <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a></right>
+  <right><a style='float: right; transition:.2s' href="{{ login_url }}" class="button"> Log In</a></right>
 </div>
 </div>
 
@@ -32,7 +32,7 @@
 </body>
 <div class="user">
   {% if current_user %}
-  <a href="{{ logout_url }}" class="button"> Log Out</a><br>
+  <a href="{{ logout_url }}" class="button" style="transition:.2s"> Log Out</a><br>
   <p class="welcome">Welcome, {{ current_user.email() }}!</p>
 
   {% else %}

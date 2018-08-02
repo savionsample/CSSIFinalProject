@@ -85,7 +85,12 @@ class CreateAccount(webapp2.RequestHandler):
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
-        pass
+        urlfromjs = self.request.get("q")
+
+        # We turn the URL into content.
+        content = "<p>Fake content.</p>"
+        self.response.write(content) #returnInfoToJs
+
 
     def post(self):
         search_term = self.request.get("search_term")
@@ -124,9 +129,20 @@ class ResultsPage(webapp2.RequestHandler):
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
 
+# # class DisplayArticle(webapp2.RequestHandler):
+# #     def post(self):
+# #         dispArt = urlfetch.fetch(url) Counter.query().get()
+#             urls = []
+#           for article in articles1:
+#               urls.append(article['url'])
+#
+# #
+# #         self.response.headers['Content-type'] = 'application/json'
+# #         self.response.write('{"count": %s}' % counter.count)
+
 app = webapp2.WSGIApplication([
     ('/', HomePage), #this maps the root url to the MainPage Handler
     ('/profile', Profile),
-    ('/create', CreateAccount),
+    ('/create', CreateAccount), #This can be implemented later on
     ('/results', ResultsPage),
 ], debug=True)

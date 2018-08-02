@@ -21,6 +21,7 @@ h1 {
   font-size: 120px;
   padding-bottom: 0px;
   color: #98C1D9;
+  margin-bottom: 40px;
 }
 
 select {
@@ -45,6 +46,7 @@ input {
   border: none;
   font-size: 16px;
   font-family: 'Lato', sans-serif;
+  padding-left: 10px;
 }
 
 
@@ -53,6 +55,7 @@ p {
   font-weight: 400;
   font-size: 18px;
   color: #e8e8e8;
+  margin-top: 50px;
 }
 
 
@@ -100,7 +103,7 @@ p {
 
 
 .content {
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 .welcome {
@@ -147,7 +150,7 @@ p {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: transparent;
+    background-color: #3D5A80;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
