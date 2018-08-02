@@ -150,6 +150,12 @@ a.profile {
   font-weight: 300;
 }
 
+.no-result {
+  text-align: center;
+  margin-top: 100px;
+  max-width: 400px;
+}
+
 h2, h3, h4 {
   color: #3D5A80;
 

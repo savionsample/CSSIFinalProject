@@ -48,7 +48,11 @@
 
       <div class="left">
         <center>
-          <h1 class="article-title"> {{articles1[0]['source']['name']}}</h1>
+          {% if articles1|length > 0 %}
+            <h1 class="article-title"> {{articles1[0]['source']['name']}}</h1>
+          {% else %}
+            <h1 class="no-result">Sorry, no results found for that search term</h1>
+          {% endif %}
         </center>
         {% for article in articles1 %}
           <div class="box">
@@ -70,7 +74,11 @@
 
     <div class="right">
       <center>
-        <h1> {{articles2[0]['source']['name']}}</h1>
+        {% if articles2|length > 0 %}
+          <h1 class="article-title"> {{articles2[0]['source']['name']}}</h1>
+        {% else %}
+          <h1 class="no-result">Sorry, no results found for that search term</h1>
+        {% endif %}
       </center>
       {% for article in articles2 %}
         <div class="box">
