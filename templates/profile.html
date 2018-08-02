@@ -9,6 +9,9 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
+
+
+{% if current_user %}
 <div class="navbar">
   <a href='/'>Home</a>
   <a href='/profile'>Profile</a>
@@ -29,6 +32,23 @@
     <h1 class="icon"> Hello, {{ current_user.email() }}!</h1>
     <p>Below are your favorited articles:</p>
     <!-- <a style='float:right;'href="{{ logout_url }}"> Log Out</a></h1> -->
+  {% else %}
+  <div class="navbar">
+    <a href='/'>Home</a>
+    <a href="/about">About</a>
+    <a style='float:right;'href="{{ login_url }}"> Log In</a></h1>
+    <div class="dropdown">
+      <button class="dropbtn">Version
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/templates/home.html">Compare US Sources</a>
+        <a href="/templates/International.html">Compare International Sources</a>
+        <a href="/templates/USInternational.html">Compare US & International Sources</a>
+      </div>
+    </div>
+  {% endif %}
+
       <center>
 
   <!-- <div>
