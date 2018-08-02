@@ -16,6 +16,11 @@ class Person(ndb.Model):
     email = ndb.StringProperty()
     name = ndb.StringProperty()
 
+class Query(ndb.Model):
+    search_term = ndb.StringProperty()
+    source1 = ndb.StringProperty()
+    source2 = ndb.StringProperty()
+        
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
