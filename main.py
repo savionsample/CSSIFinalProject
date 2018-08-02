@@ -4,12 +4,9 @@ import os
 import logging
 import requests
 import time
-import json
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
-from google.appengine.api import urlfetch
-
 
 
 # print('NEWSAPIDIRECTORY', dir(newsapi))
@@ -42,7 +39,7 @@ class HomePage(webapp2.RequestHandler):
         else:
             current_person = None
 
-        login_url = users.create_login_url('/')
+        login_url = users.create_login_url('/profile')
         logout_url = users.create_logout_url('/')
         templateVars = {
             # For the login
@@ -56,9 +53,85 @@ class HomePage(webapp2.RequestHandler):
             "source1" : source1,
             "source2": source2
         }
+        print(source1)
         template = env.get_template("templates/home.html")
         self.response.write(template.render(templateVars))
         # logging.info(response.json())
+
+class USInternational(webapp2.RequestHandler):
+    def get(self):
+
+        search_term = self.request.get("search_term")
+        source1 = self.request.get("source1")
+        source2 = self.request.get("source2")
+
+        #login
+        login_url = ''
+        logout_url = ''
+        current_user = users.get_current_user()
+        people = Person.query().fetch()
+        if current_user:
+            current_email = current_user.email() #?
+            current_person = Person.query().filter(Person.email == current_email).get()
+        else:
+            current_person = None
+
+        login_url = users.create_login_url('/profile')
+        logout_url = users.create_logout_url('/')
+        templateVars = {
+            # For the login
+            'people': people,
+            'current_user': current_user,
+            'login_url': login_url,
+            'logout_url': logout_url,
+            'current_person': current_person,
+            # Putting term into url
+            "search_term" : search_term,
+            "source1" : source1,
+            "source2": source2
+        }
+        print(source1)
+        template = env.get_template("templates/USInternational.html")
+        self.response.write(template.render(templateVars))
+        # logging.info(response.json())
+
+class International(webapp2.RequestHandler):
+    def get(self):
+
+        search_term = self.request.get("search_term")
+        source1 = self.request.get("source1")
+        source2 = self.request.get("source2")
+
+        #login
+        login_url = ''
+        logout_url = ''
+        current_user = users.get_current_user()
+        people = Person.query().fetch()
+        if current_user:
+            current_email = current_user.email() #?
+            current_person = Person.query().filter(Person.email == current_email).get()
+        else:
+            current_person = None
+
+        login_url = users.create_login_url('/profile')
+        logout_url = users.create_logout_url('/')
+        templateVars = {
+            # For the login
+            'people': people,
+            'current_user': current_user,
+            'login_url': login_url,
+            'logout_url': logout_url,
+            'current_person': current_person,
+            # Putting term into url
+            "search_term" : search_term,
+            "source1" : source1,
+            "source2": source2
+        }
+        print(source1)
+        template = env.get_template("templates/International.html")
+        self.response.write(template.render(templateVars))
+        # logging.info(response.json())
+
 
 class Profile(webapp2.RequestHandler):
     def get(self):
@@ -87,9 +160,7 @@ class CreateAccount(webapp2.RequestHandler):
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
-        urlfromjs = self.rquest.get("q")
-        content = "<p>Fake content.</p>"
-        self.response.write(content)
+        pass
 
     def post(self):
         search_term = self.request.get("search_term")
@@ -109,11 +180,6 @@ class ResultsPage(webapp2.RequestHandler):
                 &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source2=source2)
 
 
-
-
-
-
-
         response1 = requests.get(url1)
         response2 = requests.get(url2)
         json1 = response1.json()
@@ -121,50 +187,34 @@ class ResultsPage(webapp2.RequestHandler):
 
         articles1 = json1["articles"]
         articles2 = json2["articles"]
-
-        result = urlfetch.fetch(articles1[0]['url'])
-        theurl = articles1[0]['url']
-
-        mercuryUrl =  "http://mercury.postlight.com/parser?url=" + "http://trackchanges.postlight.com/building-awesome-cms-f034344d8ed";
-
-        headers = {
-            "Content-Type" : "application/json",
-            "x-api-key" : "clvePScrhD3M23AQ92ABmDs6Wmgjj3KlZFEiM3jb",
-        }
-
-        r = ""
-        try:
-            r = requests.get(mercuryUrl, headers=headers)
-        except:
-            print('chunked error')
-            self.redirect('/results')
-        htmlContent = r.text.encode('utf-8')
-
-
-        urls1 = []
-        urls2 = []
-        for article in articles1:
-            urls1.append(article['url'])
-
-        for article in articles2:
-            urls2.append(article['url'])
-
         templateVars = {
              "search_term" : search_term,
              "source1" : source1,
              "source2": source2,
              "articles1" : articles1,
              "articles2" : articles2,
-             "urls1" : urls1,
-             "urls2" : urls2,
         }
 
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
+
+
+
+class About(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/about.html")
+        self.response.write(template.render())
+
 
 app = webapp2.WSGIApplication([
     ('/', HomePage), #this maps the root url to the MainPage Handler
     ('/profile', Profile),
     ('/create', CreateAccount),
     ('/results', ResultsPage),
+    ('/usinternational', USInternational),
+    ('/international', International),
+    ('/about', About),
+
+
+
 ], debug=True)

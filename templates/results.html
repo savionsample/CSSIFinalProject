@@ -19,11 +19,12 @@
     <ul>
       <li class="search-bar">
         <form method=post action='/results'>
-          <input name="q" type="text" placeholder=" Search..." value={{search_term}}>
+          <input name="search_term" type="text" placeholder=" Search..." value="{{search_term}}">
+          <input name="source1" type="hidden" value="{{source1}}">
+          <input name="source2" type="hidden" value="{{source2}}">
           <button type="Search"><i class="fas fa-search fa-2x"></i></button>
         </form>
       </li>
-
     </ul>
   </div>
 
@@ -44,6 +45,7 @@
 
     <div class="content">
 
+
       <div class="left">
         <center>
           <h1 class="article-title"> {{articles1[0]['source']['name']}}</h1>
@@ -58,16 +60,9 @@
               <h4> {{ article['author'] }} </h4>
             {% endif %}
 
-            <!-- <script>  func( {{urls1|tojson|safe}} , {{urls2|tojson|safe}} );  </script> -->
-            <!-- <p style="display:none"></p> -->
-
-            <button class="test"></button>
-            <button class="need" type="display"><i class="fas fa-eye fa-2x"></i></button>  <!--Where you click to get the content, the id need is used in results.js  -->
-            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
-            <center>
             <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
             <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
-            <!-- <button type="favorite"><i class="fas fa-heart fa-2x"></i></button> -->
+            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
 
           </div>
         {% endfor %}
@@ -87,21 +82,15 @@
             <h4> {{ article['author'] }} </h4>
           {% endif %}
 
-          <button class="need" type="display"><i class="fas fa-eye fa-2x"></i></button>
-          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
-          <center>
           <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
           <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
-          <!-- <button type="favorite"><i class="fas fa-heart fa-2x"></i></button> -->
-        </center>
+          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+
 
         </div>
       {% endfor %}
   </div>
 
 </body>
-
-<script src=../Javascript/results.js ></script>
-
-
+<script src=../Javascript/results.js></script>
 </html>

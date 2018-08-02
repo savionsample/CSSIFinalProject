@@ -9,45 +9,36 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
-<body>
-
-  <div class="navbar">
-    <a href="#home" style="transition:.2s">Home</a>
-    <a href="#about" style="transition:.2s">About</a>
-
-    <!-- <a href='/'>Home</a>
-    <a href='/profile'>Profile</a>
-    <a href="/about">About</a>  This was a merge conflict.....-->
-    <div class="dropdown">
-      <button class="dropbtn" style="transition:.2s">Version
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-content">
-        <a href='/'>Compare U.S. Sources</a>
-        <a href="/international">Compare International Sources</a>
-        <a href="/usinternational">Compare U.S. & International Sources</a>
-      </div>
-    </div>
-    <div>
-    <!-- <right><a style='float: right; transition:.2s' href="{{ login_url }}" class="button"> Log In</a></right> -->
-      {% if current_user %}
-        <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
-      <!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a>-->
-      {% else %}
-          <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
-      {% endif %}
+<div class="navbar">
+  <a href='/'>Home</a>
+  <a href='/profile'>Profile</a>
+  <a href="/about">About</a>
+  <div class="dropdown">
+    <button class="dropbtn">Version
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href='/'>Compare U.S. Sources</a>
+      <a href="/international">Compare International Sources</a>
+      <a href="/usinternational">Compare U.S. & International Sources</a>
     </div>
   </div>
-
-
-  <div class="user">
+  <div>
     {% if current_user %}
-      <p class="welcome">Welcome, {{ current_user.email() }}!</p>
+    <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
+  <!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a> -->
+
+    {% else %}
+      <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
     {% endif %}
-  </div>
+</div>
+</div>
 
 
-<!-- <ul>
+</body>
+
+
+<ul>
 {% for person in people %}
   {% if current_user and current_user.email() == person.email %}
   <li><strong><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
@@ -55,7 +46,7 @@
   <li><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
   {% endif %}
 {% endfor %}
-</ul> -->
+</ul>
 
   <div class="content">
 
