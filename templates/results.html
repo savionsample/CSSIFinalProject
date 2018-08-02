@@ -6,6 +6,9 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
     integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <meta id="urls1" content="{{ urls1 }}">
+  <meta id="urls2" content="{{ urls2 }}">
+  <script src=../Javascript/results.js ></script>
 </head>
 
 <body>
@@ -43,7 +46,7 @@
 
       <div class="left">
         <center>
-          <h1> {{articles1[0]['source']['name']}}</h1>
+          <h1 class="article-title"> {{articles1[0]['source']['name']}}</h1>
         </center>
         {% for article in articles1 %}
           <div class="box">
@@ -54,6 +57,8 @@
             {% else %}
               <h4> {{ article['author'] }} </h4>
             {% endif %}
+            <script>  func( {{urls1|tojson|safe}} , {{urls2|tojson|safe}} );  </script>
+            <p style="display:none"></p>
           </div>
         {% endfor %}
       </div>
@@ -76,5 +81,5 @@
   </div>
 
 </body>
-<script src=../Javascript/results.js></script>
+
 </html>

@@ -4,9 +4,11 @@ import os
 import logging
 import requests
 import time
+import json
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
+from google.appengine.api import urlfetch
 
 
 # print('NEWSAPIDIRECTORY', dir(newsapi))
@@ -53,7 +55,6 @@ class HomePage(webapp2.RequestHandler):
             "source1" : source1,
             "source2": source2
         }
-        print(source1)
         template = env.get_template("templates/home.html")
         self.response.write(template.render(templateVars))
         # logging.info(response.json())
@@ -105,6 +106,11 @@ class ResultsPage(webapp2.RequestHandler):
                 &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source2=source2)
 
 
+
+
+
+
+
         response1 = requests.get(url1)
         response2 = requests.get(url2)
         json1 = response1.json()
@@ -112,12 +118,35 @@ class ResultsPage(webapp2.RequestHandler):
 
         articles1 = json1["articles"]
         articles2 = json2["articles"]
+
+        result = urlfetch.fetch(articles1[0]['url'])
+        theurl = articles1[0]['url']
+
+        mercuryUrl =  "http://mercury.postlight.com/parser?url=" + "http://trackchanges.postlight.com/building-awesome-cms-f034344d8ed";
+        headers = {
+            "Content-Type" : "application/json",
+            "x-api-key" : "clvePScrhD3M23AQ92ABmDs6Wmgjj3KlZFEiM3jb",
+        }
+        r = requests.get(mercuryUrl, headers=headers)
+        r = r.text.encode('utf-8')
+
+
+        urls1 = []
+        urls2 = []
+        for article in articles1:
+            urls1.append(article['url'])
+
+        for article in articles2:
+            urls2.append(article['url'])
+
         templateVars = {
              "search_term" : search_term,
              "source1" : source1,
              "source2": source2,
              "articles1" : articles1,
              "articles2" : articles2,
+             "urls1" : urls1,
+             "urls2" : urls2,
         }
 
         template = env.get_template('templates/results.html')

@@ -122,7 +122,6 @@ a.profile {
 
 .left {
   border-right: 3px solid black;
-  margin-left: 30px;
 }
 
 .right {
@@ -131,8 +130,8 @@ a.profile {
 
 .box {
   background-color: white;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 10px;
   padding: 5px 10px 5px 10px;
   border-radius: 4px;
