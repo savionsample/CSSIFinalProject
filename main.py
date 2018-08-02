@@ -198,9 +198,12 @@ class ResultsPage(webapp2.RequestHandler):
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
 
+
+
 class About(webapp2.RequestHandler):
     def get(self):
-        pass
+        template = env.get_template("templates/about.html")
+        self.response.write(template.render())
 
 
 app = webapp2.WSGIApplication([
@@ -211,5 +214,7 @@ app = webapp2.WSGIApplication([
     ('/usinternational', USInternational),
     ('/international', International),
     ('/about', About),
+
+
 
 ], debug=True)
