@@ -10,14 +10,11 @@
 </head>
 
 <div class="navbar">
-  <a href="#home" style="transition:.2s">Home</a>
-  <a href="#about" style="transition:.2s">About</a>
-
-  <!-- <a href='/'>Home</a>
+  <a href='/'>Home</a>
   <a href='/profile'>Profile</a>
-  <a href="/about">About</a>  This was a merge conflict.....-->
+  <a href="/about">About</a>
   <div class="dropdown">
-    <button class="dropbtn" style="transition:.2s">Version
+    <button class="dropbtn">Version
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
@@ -27,29 +24,22 @@
     </div>
   </div>
   <div>
-  <!-- <right><a style='float: right; transition:.2s' href="{{ login_url }}" class="button"> Log In</a></right> -->
+    {% if current_user %}
+    <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
+  <!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a> -->
 
-{% if current_user %}
-  <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
-<!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a>-->
-
-  {% else %}
-    <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
-  {% endif %}
+    {% else %}
+      <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
+    {% endif %}
 </div>
 </div>
 
 </div>
 
 </body>
-<div class="user">
-  {% if current_user %}
-  <a href="{{ logout_url }}" class="button" style="transition:.2s"> Log Out</a><br>
-  <p class="welcome">Welcome, {{ current_user.email() }}!</p>
-  {% endif %}
 
 
-<!-- <ul>
+<ul>
 {% for person in people %}
   {% if current_user and current_user.email() == person.email %}
   <li><strong><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
@@ -57,7 +47,7 @@
   <li><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
   {% endif %}
 {% endfor %}
-</ul> -->
+</ul>
 
 <body>
   <div class="content">
