@@ -53,10 +53,17 @@
             {% else %}
               <h4> {{ article['author'] }} </h4>
             {% endif %}
+<<<<<<< HEAD
 
          <button id="need" type="display"><i class="fas fa-eye fa-2x"></i></button>  <!--Where you click to get the content, the id need is used in results.js  -->
             <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+=======
+            <center>
+            <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
+>>>>>>> 7c1b71e1fcb23659685f39e5fb4ee4010effab06
             <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+          </center>
           </div>
         {% endfor %}
       </div>
@@ -74,9 +81,16 @@
           {% else %}
             <h4> {{ article['author'] }} </h4>
           {% endif %}
+<<<<<<< HEAD
           <button id="need" type="display"><i class="fas fa-eye fa-2x"></i></button>
           <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+=======
+          <center>
+          <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
+>>>>>>> 7c1b71e1fcb23659685f39e5fb4ee4010effab06
           <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+        </center>
 
         </div>
       {% endfor %}

@@ -58,6 +58,81 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(template.render(templateVars))
         # logging.info(response.json())
 
+class USInternational(webapp2.RequestHandler):
+    def get(self):
+
+        search_term = self.request.get("search_term")
+        source1 = self.request.get("source1")
+        source2 = self.request.get("source2")
+
+        #login
+        login_url = ''
+        logout_url = ''
+        current_user = users.get_current_user()
+        people = Person.query().fetch()
+        if current_user:
+            current_email = current_user.email() #?
+            current_person = Person.query().filter(Person.email == current_email).get()
+        else:
+            current_person = None
+
+        login_url = users.create_login_url('/profile')
+        logout_url = users.create_logout_url('/')
+        templateVars = {
+            # For the login
+            'people': people,
+            'current_user': current_user,
+            'login_url': login_url,
+            'logout_url': logout_url,
+            'current_person': current_person,
+            # Putting term into url
+            "search_term" : search_term,
+            "source1" : source1,
+            "source2": source2
+        }
+        print(source1)
+        template = env.get_template("templates/USInternational.html")
+        self.response.write(template.render(templateVars))
+        # logging.info(response.json())
+
+class International(webapp2.RequestHandler):
+    def get(self):
+
+        search_term = self.request.get("search_term")
+        source1 = self.request.get("source1")
+        source2 = self.request.get("source2")
+
+        #login
+        login_url = ''
+        logout_url = ''
+        current_user = users.get_current_user()
+        people = Person.query().fetch()
+        if current_user:
+            current_email = current_user.email() #?
+            current_person = Person.query().filter(Person.email == current_email).get()
+        else:
+            current_person = None
+
+        login_url = users.create_login_url('/profile')
+        logout_url = users.create_logout_url('/')
+        templateVars = {
+            # For the login
+            'people': people,
+            'current_user': current_user,
+            'login_url': login_url,
+            'logout_url': logout_url,
+            'current_person': current_person,
+            # Putting term into url
+            "search_term" : search_term,
+            "source1" : source1,
+            "source2": source2
+        }
+        print(source1)
+        template = env.get_template("templates/International.html")
+        self.response.write(template.render(templateVars))
+        # logging.info(response.json())
+
+
 class Profile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
@@ -129,6 +204,7 @@ class ResultsPage(webapp2.RequestHandler):
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
 
+<<<<<<< HEAD
 # # class DisplayArticle(webapp2.RequestHandler):
 # #     def post(self):
 # #         dispArt = urlfetch.fetch(url) Counter.query().get()
@@ -139,10 +215,20 @@ class ResultsPage(webapp2.RequestHandler):
 # #
 # #         self.response.headers['Content-type'] = 'application/json'
 # #         self.response.write('{"count": %s}' % counter.count)
+=======
+class About(webapp2.RequestHandler):
+    def get(self):
+        pass
+
+>>>>>>> 7c1b71e1fcb23659685f39e5fb4ee4010effab06
 
 app = webapp2.WSGIApplication([
     ('/', HomePage), #this maps the root url to the MainPage Handler
     ('/profile', Profile),
     ('/create', CreateAccount), #This can be implemented later on
     ('/results', ResultsPage),
+    ('/usinternational', USInternational),
+    ('/international', International),
+    ('/about', About),
+
 ], debug=True)

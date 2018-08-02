@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<<<<<<< HEAD
 <div>
     Welcome, {{ current_user.email() }}!
     <a href="{{ logout_url }}"> Log Out</a>
@@ -16,3 +17,41 @@
 <div>
   History
 </div>
+=======
+<title>Profile</title>
+
+<head>
+  <link href="../CSS/profile.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+
+<div class="navbar">
+  <a href='/'>Home</a>
+  <a href='/profile'>Profile</a>
+  <a href="/about">About</a>
+  <a style='float:right;'href="{{ logout_url }}"> Log Out</a></h1>
+  <div class="dropdown">
+    <button class="dropbtn">Version
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/templates/home.html">Compare US Sources</a>
+      <a href="/templates/International.html">Compare International Sources</a>
+      <a href="/templates/USInternational.html">Compare US & International Sources</a>
+    </div>
+  </div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+  <center>
+    <h1 class="icon"> Hello, {{ current_user.email() }}!</h1>
+    <p>Below are your favorited articles:</p>
+    <!-- <a style='float:right;'href="{{ logout_url }}"> Log Out</a></h1> -->
+      <center>
+
+  <!-- <div>
+      Welcome, {{ current_user.email() }}!
+      <a href="{{ logout_url }}"> Log Out</a>
+
+  </div> -->
+>>>>>>> 7c1b71e1fcb23659685f39e5fb4ee4010effab06
