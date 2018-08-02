@@ -27,15 +27,15 @@
     </div>
   </div>
   <div>
-  <right><a style='float: right; transition:.2s' href="{{ login_url }}" class="button"> Log In</a></right>
+  <!-- <right><a style='float: right; transition:.2s' href="{{ login_url }}" class="button"> Log In</a></right> -->
 
-  <!-- {% if current_user %}
+{% if current_user %}
   <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
-<!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a>
+<!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a>-->
 
   {% else %}
     <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
-  {% endif %} another merge conflict I was not sure about -->
+  {% endif %}
 </div>
 </div>
 
@@ -46,9 +46,10 @@
   {% if current_user %}
   <a href="{{ logout_url }}" class="button" style="transition:.2s"> Log Out</a><br>
   <p class="welcome">Welcome, {{ current_user.email() }}!</p>
+  {% endif %}
 
 
-<ul>
+<!-- <ul>
 {% for person in people %}
   {% if current_user and current_user.email() == person.email %}
   <li><strong><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
@@ -56,7 +57,7 @@
   <li><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
   {% endif %}
 {% endfor %}
-</ul>
+</ul> -->
 
 <body>
   <div class="content">

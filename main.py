@@ -204,7 +204,6 @@ class ResultsPage(webapp2.RequestHandler):
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
 
-<<<<<<< HEAD
 # # class DisplayArticle(webapp2.RequestHandler):
 # #     def post(self):
 # #         dispArt = urlfetch.fetch(url) Counter.query().get()
@@ -215,12 +214,9 @@ class ResultsPage(webapp2.RequestHandler):
 # #
 # #         self.response.headers['Content-type'] = 'application/json'
 # #         self.response.write('{"count": %s}' % counter.count)
-=======
 class About(webapp2.RequestHandler):
     def get(self):
         pass
-
->>>>>>> 7c1b71e1fcb23659685f39e5fb4ee4010effab06
 
 app = webapp2.WSGIApplication([
     ('/', HomePage), #this maps the root url to the MainPage Handler
