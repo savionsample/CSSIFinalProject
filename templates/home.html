@@ -9,17 +9,45 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
-<div class="user">
-  {% if current_user %}
-  <a href="{{ logout_url }}" class="button"> Log Out</a><br>
-  <p class="welcome">Welcome, {{ current_user.email() }}!</p>
+<body>
 
-  {% else %}
-    <a href="{{ login_url }}" class="button"> Log In</a>
-  {% endif %}
-</div>
+  <div class="navbar">
+    <a href="#home" style="transition:.2s">Home</a>
+    <a href="#about" style="transition:.2s">About</a>
 
-<ul>
+    <!-- <a href='/'>Home</a>
+    <a href='/profile'>Profile</a>
+    <a href="/about">About</a>  This was a merge conflict.....-->
+    <div class="dropdown">
+      <button class="dropbtn" style="transition:.2s">Version
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href='/'>Compare U.S. Sources</a>
+        <a href="/international">Compare International Sources</a>
+        <a href="/usinternational">Compare U.S. & International Sources</a>
+      </div>
+    </div>
+    <div>
+    <!-- <right><a style='float: right; transition:.2s' href="{{ login_url }}" class="button"> Log In</a></right> -->
+      {% if current_user %}
+        <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
+      <!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a>-->
+      {% else %}
+          <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+  <div class="user">
+    {% if current_user %}
+      <p class="welcome">Welcome, {{ current_user.email() }}!</p>
+    {% endif %}
+  </div>
+
+
+<!-- <ul>
 {% for person in people %}
   {% if current_user and current_user.email() == person.email %}
   <li><strong><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
@@ -27,9 +55,8 @@
   <li><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
   {% endif %}
 {% endfor %}
-</ul>
+</ul> -->
 
-<body>
   <div class="content">
 
     <center>
@@ -38,21 +65,76 @@
         <input name="search_term" type="text" placeholder="Search...">
         <button type="Search"><i class="fas fa-search fa-2x"></i></button>
         <center>
-          <p>Choose two sources to compare top headlines:</p>
+          <p>Choose two U.S. sources to compare top headlines:</p>
         <select name="source1">
-          <option value="cnn">CNN</option>
-          <option value="fox-news">FOX</option>
-          <option value="independent">Independent</option>
           <option value="abc-news">ABC News</option>
+          <option value="associated-press">Associated Press</option>
+          <option value="axios">Axios</option>
+          <option value="bbc-news">BBC News</option>
+          <option value="bloomberg">Bloomberg</option>
+          <option value="breitbart-news">Breitbart News</option>
+          <option value="business-insider">Business Insider</option>
+          <option value="buzzfeed">Buzzfeed</option>
+          <option value="cbs-news">CBS News</option>
+          <option value="cnn">CNN</option>
+          <option value="daily-mail">Daily Mail</option>
+          <option value="financial-post">Financial Post</option>
+          <option value="financial-times">Financial Times</option>
+          <option value="fortune">Fortune</option>
+          <option value="fox-news">FOX</option>
+          <option value="google-news">Google News</option>
+          <option value="independent">Independent</option>
+          <option value="national-geographic">National Geographic</option>
+          <option value="nbc-news">NBC News</option>
+          <option value="politico">Politico</option>
+          <option value="reuters">Reuters</option>
+          <option value="the-american-conservative">The American Conservative</option>
+          <option value="the-economist">The Economist</option>
+          <option value="the-hill">The Hill</option>
+          <option value="the-huffington-post">The Huffington Post</option>
+          <option value="the-new-york-times">The New York Times</option>
+          <option value="the-telegraph">The Telegraph</option>
+          <option value="the-wall-street-journal">The Wall Street Journal</option>
+          <option value="the-washington-post">The Washington Post</option>
+          <option value="time">Time</option>
+          <option value="usa-today">USA Today</option>
+          <option value="wired">Wired</option>
         </select>
         <select name="source2">
-          <option value="cnn">CNN</option>
-          <option value="fox-news" selected="selected">FOX</option>
-          <option value="independent">Independent</option>
-          <option value="abc-news">ABC News</option>
-        </select>
-        </center>
 
+            <option value="abc-news">ABC News</option>
+            <option value="associated-press" selected='selected'>Associated Press</option>
+            <option value="axios">Axios</option>
+            <option value="bbc-news">BBC News</option>
+            <option value="bloomberg">Bloomberg</option>
+            <option value="breitbart-news">Breitbart News</option>
+            <option value="business-insider">Business Insider</option>
+            <option value="buzzfeed">Buzzfeed</option>
+            <option value="cbs-news">CBS News</option>
+            <option value="cnn">CNN</option>
+            <option value="daily-mail">Daily Mail</option>
+            <option value="financial-post">Financial Post</option>
+            <option value="financial-times">Financial Times</option>
+            <option value="fortune">Fortune</option>
+            <option value="fox-news">FOX</option>
+            <option value="google-news">Google News</option>
+            <option value="independent">Independent</option>
+            <option value="national-geographic">National Geographic</option>
+            <option value="nbc-news">NBC News</option>
+            <option value="politico">Politico</option>
+            <option value="reuters">Reuters</option>
+            <option value="the-american-conservative">The American Conservative</option>
+            <option value="the-economist">The Economist</option>
+            <option value="the-hill">The Hill</option>
+            <option value="the-huffington-post">The Huffington Post</option>
+            <option value="the-new-york-times">The New York Times</option>
+            <option value="the-telegraph">The Telegraph</option>
+            <option value="the-wall-street-journal">The Wall Street Journal</option>
+            <option value="the-washington-post">The Washington Post</option>
+            <option value="time">Time</option>
+            <option value="usa-today">USA Today</option>
+            <option value="wired">Wired</option>
+          </select>
 
       </form>
     </center>

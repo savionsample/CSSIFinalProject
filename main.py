@@ -11,6 +11,7 @@ from google.appengine.ext import ndb
 from google.appengine.api import urlfetch
 
 
+
 # print('NEWSAPIDIRECTORY', dir(newsapi))
 # newsapi = NewsApiClient(api_key='334b68e424df4756b9a3bbb3caba75bd')
 
@@ -86,7 +87,9 @@ class CreateAccount(webapp2.RequestHandler):
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
-        pass
+        urlfromjs = self.rquest.get("q")
+        content = "<p>Fake content.</p>"
+        self.response.write(content)
 
     def post(self):
         search_term = self.request.get("search_term")
@@ -123,12 +126,19 @@ class ResultsPage(webapp2.RequestHandler):
         theurl = articles1[0]['url']
 
         mercuryUrl =  "http://mercury.postlight.com/parser?url=" + "http://trackchanges.postlight.com/building-awesome-cms-f034344d8ed";
+
         headers = {
             "Content-Type" : "application/json",
             "x-api-key" : "clvePScrhD3M23AQ92ABmDs6Wmgjj3KlZFEiM3jb",
         }
-        r = requests.get(mercuryUrl, headers=headers)
-        r = r.text.encode('utf-8')
+
+        r = ""
+        try:
+            r = requests.get(mercuryUrl, headers=headers)
+        except:
+            print('chunked error')
+            self.redirect('/results')
+        htmlContent = r.text.encode('utf-8')
 
 
         urls1 = []

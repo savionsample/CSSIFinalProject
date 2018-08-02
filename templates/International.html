@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<title>Home</title>
+
+<head>
+  <link href="../CSS/home.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Lobster" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+        integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+
+<div class="navbar">
+  <a href="/">Home</a>
+  <a href='/profile'>Profile</a>
+  <a href="/about">About</a>
+  <div class="dropdown">
+    <button class="dropbtn">Version
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/">Compare U.S. Sources</a>
+      <a href="/international">Compare International Sources</a>
+      <a href="/usinternational">Compare U.S. & International Sources</a>
+    </div>
+  </div>
+  <div >
+    {% if current_user %}
+    <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
+  <!-- <a style='float: right;' href="{{ login_url }}" class="button"> Log In</a> -->
+
+    {% else %}
+      <a style='float: right;'href="{{ login_url }}" class="button"> Log In</a>
+    {% endif %}
+</div>
+</div>
+
+</div>
+
+</body>
+
+
+<ul>
+{% for person in people %}
+  {% if current_user and current_user.email() == person.email %}
+  <li><strong><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
+  {% else %}
+  <li><a href="/profile?key={{ person.key.urlsafe() }}">{{person.name}}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>
+
+<body>
+  <div class="content">
+
+    <center>
+      <h1 class="icon">Juxtapost</h1>
+      <form action="/results" method="post">
+        <input name="search_term" type="text" placeholder="Search...">
+        <button type="Search"><i class="fas fa-search fa-2x"></i></button>
+        <center>
+          <p>Choose two International sources to compare top headlines:</p>
+        <select name="source1">
+          <option value="abc-news-au">ABC News AU</option>
+          <option value="aftenposten">Aftenposten</option>
+          <option value="al-jazeera-english">Al Jazeera English</option>
+          <option value="ansa">ANSA.it</option>
+          <option value="Argaam">Argaam</option>
+          <option value="ars-technica">Ars Technica</option>
+          <option value="ary-news">Ary News</option>
+          <option value="axios">Axios</option>
+          <option value="bild">Bild</option>
+          <option value="blasting-news-br">Blasting News Brazil</option>
+          <option value="business-insider-uk">UK Business Insider</option>
+          <option value="cbc-news">CBC News</option>
+          <option value="cnn-es">CNN Spanish</option>
+          <option value="der-tagesspiegel">Der Tagesspiegel</option>
+          <option value="die-zeit">Die Zeit</option>
+          <option value="el-mundo">El Mundo</option>
+          <option value="globo">Globo</option>
+          <option value="google-news">Google News</option>
+          <option value="goteborgs-posten">Goteborgs-Posten</option>
+          <option value="handelsblatt">Handelsblatt</option>
+          <option value="il-sole-24-ore">Il Sole 24 Ore</option>
+          <option value="la-gaceta">La Gaceta</option>
+          <option value="la-nacion">La Nacion</option>
+          <option value="la-repubblica">La Repubblica</option>
+          <option value="le-monde">Le Monde</option>
+          <option value="lenta">Lenta</option>
+          <option value="lequipe">L'equipe</option>
+          <option value="les-echos">Les Echos</option>
+          <option value="marca">Marca</option>
+          <option value="svenska-dagbladet">Svenska Dagbladet</option>
+          <option value="the-hindu">The Hindu</option>
+          <option value="the-irish-times">The Irish Times</option>
+          <option value="the-jerusalem-post">The Jerusalem Post</option>
+          <option value="the-times-of-india">The Times of India</option>
+          <option value="xinhua-net">Xinhua Net</option>
+        </select>
+        <select name="source2">
+          <option value="abc-news-au">ABC News AU</option>
+          <option value="aftenposten" selected='selected'>Aftenposten</option>
+          <option value="al-jazeera-english">Al Jazeera English</option>
+          <option value="ansa">ANSA.it</option>
+          <option value="Argaam">Argaam</option>
+          <option value="ars-technica">Ars Technica</option>
+          <option value="ary-news">Ary News</option>
+          <option value="axios">Axios</option>
+          <option value="bild">Bild</option>
+          <option value="blasting-news-br">Blasting News Brazil</option>
+          <option value="business-insider-uk">UK Business Insider</option>
+          <option value="cbc-news">CBC News</option>
+          <option value="cnn-es">CNN Spanish</option>
+          <option value="der-tagesspiegel">Der Tagesspiegel</option>
+          <option value="die-zeit">Die Zeit</option>
+          <option value="el-mundo">El Mundo</option>
+          <option value="globo">Globo</option>
+          <option value="google-news">Google News</option>
+          <option value="goteborgs-posten">Goteborgs-Posten</option>
+          <option value="handelsblatt">Handelsblatt</option>
+          <option value="il-sole-24-ore">Il Sole 24 Ore</option>
+          <option value="la-gaceta">La Gaceta</option>
+          <option value="la-nacion">La Nacion</option>
+          <option value="la-repubblica">La Repubblica</option>
+          <option value="le-monde">Le Monde</option>
+          <option value="lenta">Lenta</option>
+          <option value="lequipe">L'equipe</option>
+          <option value="les-echos">Les Echos</option>
+          <option value="marca">Marca</option>
+          <option value="svenska-dagbladet">Svenska Dagbladet</option>
+          <option value="the-hindu">The Hindu</option>
+          <option value="the-irish-times">The Irish Times</option>
+          <option value="the-jerusalem-post">The Jerusalem Post</option>
+          <option value="the-times-of-india">The Times of India</option>
+          <option value="xinhua-net">Xinhua Net</option>
+
+        </select>
+        </center>
+
+
+      </form>
+    </center>
+
+
+  </div>
+</body>
+
+<script src="../Javascript/home.js"></script>
+</html>

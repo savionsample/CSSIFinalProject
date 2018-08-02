@@ -8,7 +8,8 @@
     integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   <meta id="urls1" content="{{ urls1 }}">
   <meta id="urls2" content="{{ urls2 }}">
-  <script src=../Javascript/results.js ></script>
+
+
 </head>
 
 <body>
@@ -43,22 +44,31 @@
 
     <div class="content">
 
-
       <div class="left">
         <center>
           <h1 class="article-title"> {{articles1[0]['source']['name']}}</h1>
         </center>
         {% for article in articles1 %}
           <div class="box">
-            <h2> {{article['title']}} </h2>
+            <h2>{{article['title']}}</h2>
             <h3> {{article['description']}} </h3>
             {% if not article['author'] %}
               <h4>No author</h4>
             {% else %}
               <h4> {{ article['author'] }} </h4>
             {% endif %}
-            <script>  func( {{urls1|tojson|safe}} , {{urls2|tojson|safe}} );  </script>
-            <p style="display:none"></p>
+
+            <!-- <script>  func( {{urls1|tojson|safe}} , {{urls2|tojson|safe}} );  </script> -->
+            <!-- <p style="display:none"></p> -->
+
+            <button class="test"></button>
+            <button class="need" type="display"><i class="fas fa-eye fa-2x"></i></button>  <!--Where you click to get the content, the id need is used in results.js  -->
+            <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+            <center>
+            <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
+            <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+            <!-- <button type="favorite"><i class="fas fa-heart fa-2x"></i></button> -->
+
           </div>
         {% endfor %}
       </div>
@@ -69,17 +79,29 @@
       </center>
       {% for article in articles2 %}
         <div class="box">
-          <h2> {{article['title']}} </h2>
+          <h2>{{article['title']}}</h2>
           <h3> {{article['description']}} </h3>
           {% if not article['author'] %}
             <h4>No author</h4>
           {% else %}
             <h4> {{ article['author'] }} </h4>
           {% endif %}
+
+          <button class="need" type="display"><i class="fas fa-eye fa-2x"></i></button>
+          <button type="favorite"><i class="fas fa-heart fa-2x"></i></button>
+          <center>
+          <!-- <button type="display"><i class="fas fa-eye fa-2x"></i></button> -->
+          <a href="{{ article['url'] }}"><button type="link"><i class="fas fa-link fa-2x"></i></button></a>
+          <!-- <button type="favorite"><i class="fas fa-heart fa-2x"></i></button> -->
+        </center>
+
         </div>
       {% endfor %}
   </div>
 
 </body>
+
+<script src=../Javascript/results.js ></script>
+
 
 </html>
