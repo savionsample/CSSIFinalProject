@@ -16,6 +16,11 @@ class Person(ndb.Model):
     email = ndb.StringProperty()
     name = ndb.StringProperty()
 
+class Query(ndb.Model):
+    search_term = ndb.StringProperty()
+    source1 = ndb.StringProperty()
+    source2 = ndb.StringProperty()
+        
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -138,7 +143,6 @@ class Profile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         if current_user:
             current_email = current_user.email() #?
-            template = env.get_template('templates/profile.html')
         else:
             current_person = None
         logout_url = users.create_logout_url('/')
@@ -146,6 +150,7 @@ class Profile(webapp2.RequestHandler):
             'current_user': current_user,
             'logout_url': logout_url,
         }
+        template = env.get_template('templates/profile.html')
         self.response.write(template.render(templateVars))
 
 class CreateAccount(webapp2.RequestHandler):
@@ -204,8 +209,18 @@ class ResultsPage(webapp2.RequestHandler):
 
 class About(webapp2.RequestHandler):
     def get(self):
+        current_user = users.get_current_user()
+        if current_user:
+            current_email = current_user.email() #?
+        else:
+            current_person = None
+        logout_url = users.create_logout_url('/')
+        templateVars = {
+            'current_user': current_user,
+            'logout_url': logout_url,
+        }
         template = env.get_template("templates/about.html")
-        self.response.write(template.render())
+        self.response.write(template.render(templateVars))
 
 
 app = webapp2.WSGIApplication([
