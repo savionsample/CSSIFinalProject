@@ -15,12 +15,14 @@ from google.appengine.ext import ndb
 class Person(ndb.Model):
     email = ndb.StringProperty()
     name = ndb.StringProperty()
+    history = ndb.StringProperty()
 
 class Query(ndb.Model):
     search_term = ndb.StringProperty()
     source1 = ndb.StringProperty()
     source2 = ndb.StringProperty()
-        
+    personKey = ndb.KeyProperty()
+
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
@@ -143,12 +145,23 @@ class Profile(webapp2.RequestHandler):
         current_user = users.get_current_user()
         if current_user:
             current_email = current_user.email() #?
+            current_person = Person.query().filter(Person.email == current_email).get()
         else:
             current_person = None
         logout_url = users.create_logout_url('/')
+
+        # person variable
+        query_query = Query.query()
+        query_query = Query.query().filter(Query.personKey == current_person.key)
+        queries = query_query.fetch()
+
         templateVars = {
             'current_user': current_user,
             'logout_url': logout_url,
+            'queries' : queries,
+
+
+
         }
         template = env.get_template('templates/profile.html')
         self.response.write(template.render(templateVars))
@@ -164,14 +177,28 @@ class CreateAccount(webapp2.RequestHandler):
         self.redirect('/')
 
 class ResultsPage(webapp2.RequestHandler):
-    def get(self):
-        pass
 
-    def post(self):
+
+    def get(self):
         search_term = self.request.get("search_term")
         source1 = self.request.get("source1")
         source2 = self.request.get("source2")
+        current_user = users.get_current_user()
+        people = Person.query().fetch()
+
         # template = env.get_template("templates/home.html")
+
+        if current_user:
+            current_email = current_user.email()
+            current_person = Person.query().filter(Person.email == current_email).get()
+            if not current_person:
+                current_person = Person(email=current_email)
+                current_person.put()
+            query = Query(search_term=search_term, source1=source1, source2=source2, personKey=current_person.key)
+            query.put()
+
+        else:
+            current_person = None
 
         logging.info(search_term)
         url1 = """http://newsapi.org/v2/everything?sources={source1} \
@@ -183,6 +210,7 @@ class ResultsPage(webapp2.RequestHandler):
                 &q={search_term} \
                 &sortBy=popularity \
                 &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source2=source2)
+
 
 
         response1 = requests.get(url1)
@@ -198,7 +226,10 @@ class ResultsPage(webapp2.RequestHandler):
              "source2": source2,
              "articles1" : articles1,
              "articles2" : articles2,
+             "current_person" : current_person,
+             "current_user" : current_user,
         }
+
 
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
