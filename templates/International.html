@@ -9,6 +9,8 @@
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
+
+{% if current_user %}
 <div class="navbar">
   <a href="/">Home</a>
   <a href='/profile'>Profile</a>
@@ -23,6 +25,22 @@
       <a href="/usinternational">Compare U.S. & International Sources</a>
     </div>
   </div>
+{% else %}
+<div class="navbar">
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <div class="dropdown">
+    <button class="dropbtn">Version
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="/">Compare U.S. Sources</a>
+      <a href="/international">Compare International Sources</a>
+      <a href="/usinternational">Compare U.S. & International Sources</a>
+    </div>
+  </div>
+  {% endif %}
+
   <div >
     {% if current_user %}
     <a style='float: right;'href="{{ logout_url }}" class="button"> Log Out</a><br>
