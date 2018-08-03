@@ -168,6 +168,8 @@ class ResultsPage(webapp2.RequestHandler):
         source2 = self.request.get("source2")
         # template = env.get_template("templates/home.html")
 
+
+
         logging.info(search_term)
         url1 = """http://newsapi.org/v2/everything?sources={source1} \
                 &q={search_term} \

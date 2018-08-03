@@ -58,6 +58,17 @@ p {
   margin-top: 40px;
 }
 
+li {
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+ul {
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 0px;
+}
+
 
 .content button {
   vertical-align: top;
@@ -115,6 +126,7 @@ p {
     overflow: hidden;
     /* background-color: navy; */
     font-family: Arial, Helvetica, sans-serif;
+    margin-left: 0px;
 }
 
 .navbar a {
@@ -143,9 +155,17 @@ p {
     margin: 0;
 }
 
-.navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #EE6C4D;
+
+
+.navbar a:hover, .dropdown:hover, .dropbtn {
+    background-color: #293241;
 }
+
+.dropdown:hover {
+  background-color: #EE6C4D;
+}
+
+
 
 .dropdown-content {
     display: none;
@@ -171,4 +191,84 @@ p {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* /////////////////////////////// */
+
+
+
+
+
+/* stroke */
+
+.fill ul li a {
+  position: relative;
+}
+
+.fill ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+
+
+.fill li a {
+  transition: all 1s;
+}
+
+.fill ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+.fill ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+.fill ul li a:hover:after {
+  z-index: -10;
+  animation: fill .4s forwards;
+  -webkit-animation: fill .4s forwards;
+  -moz-animation: fill .4s forwards;
+  opacity: 1;
+}
+
+.fill li {
+  list-style-type: none;
+}
+
+
+/* Keyframes */
+@-webkit-keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #EE6C4D;
+  }
 }

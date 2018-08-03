@@ -133,6 +133,9 @@ a.profile {
   display: inline-block;
   float: right;
 }
+a {
+  color: #3D5A80;
+}
 
 
 .left {
