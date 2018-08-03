@@ -158,7 +158,7 @@ class Profile(webapp2.RequestHandler):
 
         # person variable
         query_query = Query.query()
-        query_query = Query.query().order(-Query.date).filter(Query.personKey == current_person.key)
+        query_query = Query.query().filter(Query.personKey == current_person.key)
         queries = query_query.fetch()
 
         templateVars = {
