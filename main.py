@@ -9,6 +9,7 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 
 
+
 # print('NEWSAPIDIRECTORY', dir(newsapi))
 # newsapi = NewsApiClient(api_key='334b68e424df4756b9a3bbb3caba75bd')
 
@@ -22,6 +23,7 @@ class Query(ndb.Model):
     source1 = ndb.StringProperty()
     source2 = ndb.StringProperty()
     personKey = ndb.KeyProperty()
+    date = ndb.DateTimeProperty(auto_now_add=True)
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -152,15 +154,13 @@ class Profile(webapp2.RequestHandler):
 
         # person variable
         query_query = Query.query()
-        query_query = Query.query().filter(Query.personKey == current_person.key)
+        query_query = Query.query().order(-Query.date).filter(Query.personKey == current_person.key)
         queries = query_query.fetch()
 
         templateVars = {
             'current_user': current_user,
             'logout_url': logout_url,
             'queries' : queries,
-
-
 
         }
         template = env.get_template('templates/profile.html')

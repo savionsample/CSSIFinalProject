@@ -53,8 +53,9 @@
 
 
     {% for query in queries %}
+    <a href='/results?search_term={{query.search_term}}&source1={{query.source1}}&source2={{query.source2}}'>
     <p> {{query.search_term}} </p>
-    
+    </a>
     {% endfor %}
 
   <!-- <div>
