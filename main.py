@@ -148,8 +148,12 @@ class Profile(webapp2.RequestHandler):
         if current_user:
             current_email = current_user.email() #?
             current_person = Person.query().filter(Person.email == current_email).get()
+            if not current_person:
+                current_person = Person(email=current_email)
+                current_person.put()
         else:
-            current_person = None
+            self.redirect('/')
+
         logout_url = users.create_logout_url('/')
 
         # person variable
