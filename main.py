@@ -19,8 +19,47 @@ class Query(ndb.Model):
     search_term = ndb.StringProperty()
     source1 = ndb.StringProperty()
     source2 = ndb.StringProperty()
+    source1_name = ndb.StringProperty()
+    source2_name = ndb.StringProperty()
     personKey = ndb.KeyProperty()
-    date = ndb.DateTimeProperty(auto_now_add=True)
+    time_searched = ndb.DateTimeProperty(auto_now_add=True)
+
+
+def to_name(source):
+    dict = {
+       'abc-news' : 'ABC News',
+       'associated-press' : 'Associated Press',
+       'axios' : 'Axios',
+       'bbc-news' : 'BBC News',
+       'bloomberg' : 'Bloomberg',
+       'breitbart-news' : 'Breitbart News',
+       'business-insider' : 'Business Insider',
+       'buzzfeed' : 'Buzzfeed',
+       'cbs-news' : 'CBS News',
+       'cnn' : 'CNN',
+       'daily-mail' : 'Daily Mail',
+       'financial-post' : 'Financial Post',
+       'financial-times' : 'Financial Times',
+       'fortune' : 'Fortune',
+       'fox-news' : 'FOX',
+       'independent' : 'Independent',
+       'national-geographic' : 'National Geographic',
+       'nbc-news' : 'NBC News',
+       'politico' : 'Politico',
+       'reuters' : 'Reuters',
+       'the-american-conservative' : 'The American Conservative',
+       'the-economist' : 'The Economist',
+       'the-hill' : 'The Hill',
+       'the-huffington-post' : 'The Huffington Post',
+       'the-new-york-times' : 'The New York Times',
+       'the-telegraph' : 'The Telegraph',
+       'the-wall-street-journal' : 'The Wall Street Journal',
+       'the-washington-post' : 'The Washington Post',
+       'time' : 'Time',
+       'usa-today' : 'USA Today',
+       'wired' : 'Wired',
+    }
+    return dict[source]
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -155,7 +194,8 @@ class Profile(webapp2.RequestHandler):
         # person variable
         query_query = Query.query()
         query_query = Query.query().filter(Query.personKey == current_person.key)
-        queries = query_query.fetch()
+        query_query = query_query.order(-Query.time_searched)
+        queries = query_query.fetch(limit=20)
 
         templateVars = {
             'current_user': current_user,
@@ -181,8 +221,12 @@ class ResultsPage(webapp2.RequestHandler):
         search_term = self.request.get("search_term")
         source1 = self.request.get("source1")
         source2 = self.request.get("source2")
+        source1_name = to_name(source1)
+        source2_name = to_name(source2)
         current_user = users.get_current_user()
         people = Person.query().fetch()
+
+        print('SOURCE1 NAME: ' + source1_name)
 
         # template = env.get_template("templates/home.html")
 
@@ -192,9 +236,10 @@ class ResultsPage(webapp2.RequestHandler):
             if not current_person:
                 current_person = Person(email=current_email)
                 current_person.put()
-            query = Query(search_term=search_term, source1=source1, source2=source2, personKey=current_person.key)
+            source1_name = to_name(source1)
+            query = Query(search_term=search_term, source1=source1, source2=source2, source1_name=source1_name,
+                source2_name=source2_name, personKey=current_person.key)
             query.put()
-
         else:
             current_person = None
 

@@ -133,6 +133,7 @@ a.profile {
   display: inline-block;
   float: right;
 }
+
 a {
   color: #3D5A80;
 }
@@ -140,10 +141,12 @@ a {
 
 .left {
   border-right: 3px solid black;
+  border-left: 6px solid black;
   margin-left: 0px;
 }
 
 .right {
+  border-right: 6px solid black;
   border-left: 3px solid black;
 }
 
@@ -221,4 +224,21 @@ h2 {
 	border-radius: 50%;
 	opacity: 0;
 	pointer-events: none;
+}
+
+
+
+
+.bar-top {
+  height: 6px;
+  width: 100%;
+  background-color: black;
+}
+
+.bar-bottom {
+  height: 6px;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  bottom: 0;
 }

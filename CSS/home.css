@@ -327,17 +327,16 @@ img {
 }
 
 .explanation1 {
-  width: 50%;
+  width: 48%;
   min-width: 600px;
-
   margin: auto;
   /* margin-top: -130px; */
   /* margin-top: -10%; */
-  margin-top: calc(95px - 15%);
+  margin-top: calc(92px - 15%);
 }
 
 .explanation2 {
-  width: 50%;
+  width: 48%;
   min-width: 600px;
   height: 200px;
   margin: auto;
