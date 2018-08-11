@@ -30,6 +30,9 @@ select {
   margin-right: 5px;
   margin-left: 5px;
   font-size: 15px;
+
+  /* for Safari browsers to show height */
+  -webkit-appearance: menulist-button;
 }
 
 input {
@@ -114,7 +117,8 @@ ul {
 
 
 .content {
-  margin-top: 100px;
+  /* margin-top: 100px; */
+  transition: 2s;
 }
 
 .welcome {
@@ -270,5 +274,105 @@ ul {
     width: 100%;
     height: 100%;
     background: #EE6C4D;
+  }
+}
+
+
+
+
+
+.overlay {
+  background-color: rgba(192, 192, 192, 0.5);
+  position: fixed;
+  z-index: 1;
+  height: 0;
+  width: 100%;
+  overflow-y: hidden; /* makes contents of div only appear when display is opened */
+  transition: 1.5s;
+}
+
+.overlay p {
+  text-decoration: none;
+}
+
+img {
+  pointer-events: none; /* stop from dragging image */
+  user-select: none; /* stop from highlighting image */
+}
+
+.image1 {
+  /* width: 300px; */
+  width: 22%;
+  margin-left: 2%;
+  margin-top: 160px;
+ }
+
+.image2 {
+ /* width: 300px; */
+ width: 22%;
+ float: right;
+ margin-right: -1.5%;
+ margin-top: 160px;
+}
+
+.close {
+  float: right;
+  margin-right: 12px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.overlay p {
+  font-weight: 300;
+}
+
+.explanation1 {
+  width: 50%;
+  min-width: 600px;
+
+  margin: auto;
+  /* margin-top: -130px; */
+  /* margin-top: -10%; */
+  margin-top: calc(95px - 15%);
+}
+
+.explanation2 {
+  width: 50%;
+  min-width: 600px;
+  height: 200px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+p a {
+  text-decoration: none;
+  color: #3a59d9;
+}
+
+
+
+@media (max-width: 1170px) {
+  img {
+    opacity: 0;
+  }
+
+  .explanation1 {
+    font-size: 16px;
+  }
+
+  .explanation2 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1120px) {
+  .explanation1 {
+    margin-top: calc(80px - 5%);
+  }
+}
+
+@media (max-width: 750px) {
+  .explanation1 {
+    margin-top: calc(60px + 5%);
   }
 }

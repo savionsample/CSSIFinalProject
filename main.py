@@ -5,13 +5,10 @@ import logging
 import requests
 import time
 
+import config
+
 from google.appengine.api import users
 from google.appengine.ext import ndb
-
-
-
-# print('NEWSAPIDIRECTORY', dir(newsapi))
-# newsapi = NewsApiClient(api_key='334b68e424df4756b9a3bbb3caba75bd')
 
 class Person(ndb.Model):
     email = ndb.StringProperty()
@@ -141,7 +138,6 @@ class International(webapp2.RequestHandler):
         self.response.write(template.render(templateVars))
         # logging.info(response.json())
 
-
 class Profile(webapp2.RequestHandler):
     def get(self):
         current_user = users.get_current_user()
@@ -181,8 +177,6 @@ class CreateAccount(webapp2.RequestHandler):
         self.redirect('/')
 
 class ResultsPage(webapp2.RequestHandler):
-
-
     def get(self):
         search_term = self.request.get("search_term")
         source1 = self.request.get("source1")
@@ -208,14 +202,12 @@ class ResultsPage(webapp2.RequestHandler):
         url1 = """http://newsapi.org/v2/everything?sources={source1} \
                 &q={search_term} \
                 &sortBy=popularity \
-                &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source1=source1)
+                &apiKey={api_key}""".format(search_term=search_term, source1=source1, api_key=config.api_key)
 
         url2 = """http://newsapi.org/v2/everything?sources={source2} \
                 &q={search_term} \
                 &sortBy=popularity \
-                &apiKey=334b68e424df4756b9a3bbb3caba75bd""".format(search_term=search_term, source2=source2)
-
-
+                &apiKey={api_key}""".format(search_term=search_term, source2=source2, api_key=config.api_key)
 
         response1 = requests.get(url1)
         response2 = requests.get(url2)
@@ -234,11 +226,8 @@ class ResultsPage(webapp2.RequestHandler):
              "current_user" : current_user,
         }
 
-
         template = env.get_template('templates/results.html')
         self.response.write(template.render(templateVars))
-
-
 
 class About(webapp2.RequestHandler):
     def get(self):
@@ -255,7 +244,6 @@ class About(webapp2.RequestHandler):
         template = env.get_template("templates/about.html")
         self.response.write(template.render(templateVars))
 
-
 app = webapp2.WSGIApplication([
     ('/', HomePage), #this maps the root url to the MainPage Handler
     ('/profile', Profile),
@@ -264,7 +252,4 @@ app = webapp2.WSGIApplication([
     ('/usinternational', USInternational),
     ('/international', International),
     ('/about', About),
-
-
-
 ], debug=True)
