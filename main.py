@@ -98,7 +98,7 @@ class HomePage(webapp2.RequestHandler):
             "source1" : source1,
             "source2": source2
         }
-        print(source1)
+
         template = env.get_template("templates/home.html")
         self.response.write(template.render(templateVars))
         # logging.info(response.json())
@@ -135,7 +135,7 @@ class USInternational(webapp2.RequestHandler):
             "source1" : source1,
             "source2": source2
         }
-        print(source1)
+
         template = env.get_template("templates/USInternational.html")
         self.response.write(template.render(templateVars))
         # logging.info(response.json())
@@ -172,7 +172,7 @@ class International(webapp2.RequestHandler):
             "source1" : source1,
             "source2": source2
         }
-        print(source1)
+
         template = env.get_template("templates/International.html")
         self.response.write(template.render(templateVars))
         # logging.info(response.json())
@@ -188,21 +188,28 @@ class Profile(webapp2.RequestHandler):
                 current_person.put()
         else:
             self.redirect('/')
+            current_person = None
 
         logout_url = users.create_logout_url('/')
+        templateVars = {}
 
-        # person variable
-        query_query = Query.query()
-        query_query = Query.query().filter(Query.personKey == current_person.key)
-        query_query = query_query.order(-Query.time_searched)
-        queries = query_query.fetch(limit=20)
+        try:
+            # person variable
+            query_query = Query.query()
+            query_query = Query.query().filter(Query.personKey == current_person.key)
+            query_query = query_query.order(-Query.time_searched)
+            queries = query_query.fetch(limit=20) #######3
 
-        templateVars = {
-            'current_user': current_user,
-            'logout_url': logout_url,
-            'queries' : queries,
+            templateVars = {
+                'current_user': current_user,
+                'logout_url': logout_url,
+                'queries' : queries,
 
-        }
+            }
+        except AttributeError:
+            self.redirect('/')
+
+
         template = env.get_template('templates/profile.html')
         self.response.write(template.render(templateVars))
 
@@ -225,10 +232,6 @@ class ResultsPage(webapp2.RequestHandler):
         source2_name = to_name(source2)
         current_user = users.get_current_user()
         people = Person.query().fetch()
-
-        print('SOURCE1 NAME: ' + source1_name)
-
-        # template = env.get_template("templates/home.html")
 
         if current_user:
             current_email = current_user.email()
